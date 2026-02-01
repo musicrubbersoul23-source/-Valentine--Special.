@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Special Surprise 🌸</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 350px;
+            position: relative;
+        }
+        img { width: 100%; border-radius: 20px; }
+        h1 { color: #d63384; font-size: 22px; margin: 20px 0; }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            height: 50px;
+            position: relative;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease; /* Makes the No button slide like the video */
+            touch-action: none;
+        }
+        #yesBtn { background: #ff4b2b; color: white; }
+        #noBtn { background: #f8f9fa; color: #333; position: absolute; }
+    </style>
+</head>
+<body>
+    <div class="container" id="card">
+        <img id="gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpndW1yZHF4ZzVqbm9pZHF4ZzVqbm9pZHF4ZzVqbm9pZHF4ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif">
+        <h1 id="text">Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="nextPage()">Yes</button>
+            <button id="noBtn" onmouseover="move()" ontouchstart="move()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function move() {
+            const card = document.getElementById('card');
+            const noBtn = document.getElementById('noBtn');
+            
+            // Keeps button within the white card boundaries
+            const x = Math.random() * (card.offsetWidth - noBtn.offsetWidth);
+            const y = Math.random() * (card.offsetHeight - noBtn.offsetHeight);
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function nextPage() {
+            document.getElementById('text').innerHTML = "I knew it! ❤️";
+            document.getElementById('gif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpndW1yZHF4ZzVqbm9pZHF4ZzVqbm9pZHF4ZzVqbm9pZHF4ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KztT2c4u8mYYUiMKdJ/giphy.gif";
+            document.querySelector('.buttons').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
